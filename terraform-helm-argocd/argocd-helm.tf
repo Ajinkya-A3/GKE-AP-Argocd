@@ -6,10 +6,10 @@ resource "helm_release" "argocd" {
   chart      = "argo-cd"
 
   # 🔒 Fixed chart version (as requested)
-  version = "9.1.8"
+  version = var.chart_version
 
   values = [
-    file("${path.module}/values-argocd.yaml")
+    file(var.values_path)
   ]
 
   wait    = true
